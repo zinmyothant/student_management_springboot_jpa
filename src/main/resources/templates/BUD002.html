@@ -1,0 +1,101 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link th:href="@{/resources/css/base.css}" rel="stylesheet" />
+<link th:href="@{/resources/css/container.css}" rel="stylesheet" />
+<script type="text/javascript"
+	th:src="@{/resources/js/accordion-menu.js}"></script>
+<script type="text/javascript" th:src="@{/resources/js/general.js}"></script>
+
+
+<title>(BUD002)Student Register</title>
+
+<script type="text/javascript">
+	window.onload = function() {
+		menu();
+	}
+</script>
+<div th:replace="header :: myheader"></div>
+</head>
+<body class="main_body">
+
+	<div id="container">
+		<div id="left_menu">
+			<!-- menu html code exist the menu function of general.js -->
+		</div>
+		<div id="main_contents">
+			<div id="contents">
+				<div class="search_form">
+					<h3>Student Register</h3>
+					
+					<label id="errormsg" th:text="${err}">  </label> <label style="color: blue;" th:text="${msg}"></label>
+					<br /> <br /> <br />
+					<form action="/setupaddstudent" method="post"
+						th:object="${student}">
+						<table class="tableForm">
+							<tr>
+								<td class="tblSingleLabel">Student No *</td>
+								<td class="tblSingleInput"><input type="text"
+									th:field="*{studentId}" class="txtlong" /> <label
+									th:if="${#fields.hasErrors('studentId')}"
+									th:errors="*{studentId}" style="color: red;">Error</label></td>
+							</tr>
+							<tr>
+								<td class="tblSingleLabel">Student Name *</td>
+								<td class="tblSingleInput"><input type="text"
+									th:field="*{studentName}" class="txtlong" /> <label
+									th:if="${#fields.hasErrors('studentName')}"
+									th:errors="*{studentName}" style="color: red;">Error</label></td>
+							</tr>
+							<tr>
+								<td class="tblSingleLabel">Class Name *</td>
+								<td class="tblSingleInput"><select id="expenseType"
+										th:field="*{className}">
+
+										<option value="NONE" label="Select" />
+									
+										<option th:each="list:${session.clist}" th:text="${list.name}" th:value="${list.name}"></option>
+			
+
+									</select> <label th:if="${#fields.hasErrors('className')}"
+									th:errors="*{className}" style="color: red;">Error</label></td>
+							</tr>
+							<tr>
+								<td class="tblSingleLabel">Register Date</td>
+								<td><input th:field="*{register}" type="datetime-local" /><label
+									th:if="${#fields.hasErrors('register')}"
+									th:errors="*{register}" style="color: red;">Error</label></td>
+							</tr>
+							<tr>
+								<td class="tblSingleLabel">Status *</td>
+								<td class="tblSingleInput"><select id="expenseType"
+									th:field="*{status}">
+										<option value=""></option>
+
+										<option th:value="Attending">Attending</option>
+										<option th:value="Passed">Passed</option>
+										<option th:value="Failed">Failed</option>
+										<label th:if="${#fields.hasErrors('status')}"
+										th:errors="*{status}" style="color: red;">Error</label>
+								</select></td>
+							</tr>
+
+
+						</table>
+						<br />
+						<div id="btnGroup">
+							<input type="submit" value="Register" class="button" />
+						</div>
+						</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="footer">
+		<span>Copyright &#169; ACE Inspiration 2016</span>
+	</div>
+</body>
+</html>
