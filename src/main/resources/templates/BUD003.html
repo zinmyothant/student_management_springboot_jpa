@@ -5,7 +5,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link th:href="@{/resources/css/base.css}" rel="stylesheet" />
 <link th:href="@{/resources/css/container.css}" rel="stylesheet" />
-<script type="text/javascript" th:src="@{/resources/js/accordion-menu.js}"></script>
+<script type="text/javascript"
+	th:src="@{/resources/js/accordion-menu.js}"></script>
 <script type="text/javascript" th:src="@{/resources/js/general.js}"></script>
 
 
@@ -27,41 +28,32 @@
 		<div id="main_contents">
 			<div id="contents">
 				<h3>Class Register</h3>
-				<label id="errormsg" th:text="${err}">  </label> <label style="color: blue;" th:text="${msg}"></label>
-				<br />
-				<br />
-				<br />
+				<label id="errormsg" th:text="${err}"> </label> <label
+					style="color: blue;" th:text="${msg}"></label> <br /> <br /> <br />
 
-				<form name="registerForm" action="/setupaddclass"
+				<form name="registerForm" th:action="@{setupaddclass}"
 					method="post" th:object="${classes}">
 					<table class="tableForm">
 						<tr>
 							<td class="tblSingleLabel">Class ID *</td>
 							<td class="tblSingleInput"><input type="text" id="txtUserId"
-								class="txt_popup" th:field="*{id}" />
-								<label th:if="${#fields.hasErrors('id')}" th:errors="*{id}"
-								style="color: red;">Error</label>
-								
-								</td>
+								class="txt_popup" th:field="*{id}" /> <label
+								th:if="${#fields.hasErrors('id')}" th:errors="*{id}"
+								style="color: red;">Error</label></td>
 						</tr>
 						<tr>
 							<td class="tblSingleLabel">Class Name *</td>
 							<td class="tblSingleInput"><input type="text"
-								class="txtlong_popup" id="txtUserName" 
-								th:field="*{name}" />
-								<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
-								style="color: red;">Error</label>
-
-								</td>
+								class="txtlong_popup" id="txtUserName" th:field="*{name}" /> <label
+								th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+								style="color: red;">Error</label></td>
 						</tr>
 
 					</table>
 					<br /> <input type="submit" value="Register" class="button" />
 				</form>
 
-				<br />
-				<br />
-				<br />
+				<br /> <br /> <br />
 			</div>
 		</div>
 

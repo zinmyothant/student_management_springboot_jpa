@@ -29,10 +29,10 @@
 			<div id="contents">
 				<div class="search_form">
 					<h3>Student Register</h3>
-					
-					<label id="errormsg" th:text="${err}">  </label> <label style="color: blue;" th:text="${msg}"></label>
-					<br /> <br /> <br />
-					<form action="/setupaddstudent" method="post"
+
+					<label id="errormsg" th:text="${err}"> </label> <label
+						style="color: blue;" th:text="${msg}"></label> <br /> <br /> <br />
+					<form th:action="@{setupaddstudent}" method="post"
 						th:object="${student}">
 						<table class="tableForm">
 							<tr>
@@ -52,14 +52,15 @@
 							<tr>
 								<td class="tblSingleLabel">Class Name *</td>
 								<td class="tblSingleInput"><select id="expenseType"
-										th:field="*{className}">
+									th:field="*{className}">
 
 										<option value="NONE" label="Select" />
-									
-										<option th:each="list:${session.clist}" th:text="${list.name}" th:value="${list.name}"></option>
-			
 
-									</select> <label th:if="${#fields.hasErrors('className')}"
+										<option th:each="list:${session.clist}" th:text="${list.name}"
+											th:value="${list.name}"></option>
+
+
+								</select> <label th:if="${#fields.hasErrors('className')}"
 									th:errors="*{className}" style="color: red;">Error</label></td>
 							</tr>
 							<tr>
@@ -88,7 +89,7 @@
 						<div id="btnGroup">
 							<input type="submit" value="Register" class="button" />
 						</div>
-						</form>
+					</form>
 				</div>
 			</div>
 		</div>

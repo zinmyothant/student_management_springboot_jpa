@@ -4,7 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link th:href="@{/resources/css/base.css}" rel="stylesheet" />
 <link th:href="@{/resources/css/container.css}" rel="stylesheet" />
-<script type="text/javascript" th:src="@{/resources/js/accordion-menu.js}"></script>
+<script type="text/javascript"
+	th:src="@{/resources/js/accordion-menu.js}"></script>
 <script type="text/javascript" th:src="@{/resources/js/general.js}"></script>
 
 
@@ -34,7 +35,8 @@
 			<div id="contents">
 				<div class="search_form">
 					<h3>User Search</h3>
-					<form action="setupusersearch" th:object="${user}" method="post">
+					<form th:action="@{setupusersearch}" th:object="${user}"
+						method="post">
 						<table class="tableForm">
 							<tr>
 								<td class="tblLabel"><label>User ID</label></td>
@@ -52,17 +54,15 @@
 					</form>
 					<a href="useradd"> <input type="button" value="Add"
 						class="button" id="userInsert" />
-					</a>
-					<a href="userreset"> <input type="button" value="Reset" class="button" /></a> <br /> <br />
+					</a> <a th:href="@{/admin/userreset}"> <input type="button" value="Reset"
+						class="button" /></a> <br /> <br />
 					<div id="errormsg">
 						<label id="message" th:text="${err}"></label>
 					</div>
 					<label style="color: blue;" th:text="${msg}"></label>
 				</div>
 
-				<br />
-				<br />
-				<br />
+				<br /> <br /> <br />
 				<div id="list">
 
 					<table class="resultTable">
@@ -75,18 +75,16 @@
 
 							</tr>
 						</c:if>
-							<tr th:each="list : ${userlist}">
-								<td >
-								<a th:href="@{/userdelete(uid=${list.id})}"> Delete 
-								</a></td>
-						
-								<td><a th:href="@{userupdate(uid=${list.id})}"> Update
-								</a></td>
+						<tr th:each="list : ${userlist}">
+							<td><a th:href="@{userdelete(uid=${list.id})}"> Delete
+							</a></td>
 
-								<td th:text="${list.id}"></td>
-								<td th:text="${list.name}"></td>
-							</tr>
-						
+							<td><a th:href="@{userupdate(uid=${list.id})}"> Update </a></td>
+
+							<td th:text="${list.id}"></td>
+							<td th:text="${list.name}"></td>
+						</tr>
+
 					</table>
 
 				</div>

@@ -68,13 +68,13 @@ function menu(){
     html = html +'<li>';
     html = html +'<div>Class Management</div>';
     html = html +'<ul>'
-    html = html +'<li><a href="/classform">Class Registration</a></li>';
-    html = html +'<li><a href="/searchstudent">Student Search</a></li>';
-    html = html +'<li><a href="/addstudent">Student Registration</a></li>';
+    html = html +'<li><a href="/admin/classform">Class Registration</a></li>';
+    html = html +'<li><a href="/admin/searchstudent">Student Search</a></li>';
+    html = html +'<li><a href="/admin/addstudent">Student Registration</a></li>';
     html = html +'</ul>';
     html = html +'</li>';
     html = html +'<li id="no-child">';
-    html = html +'<a href="/usersearch" style="font-weight:bold;">User Management</a>';
+    html = html +'<a href="/admin/usersearch" style="font-weight:bold;">User Management</a>';
     html = html +'</li>';
     html = html +'</ul>';
     html = html +'</div>';

@@ -4,7 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link th:href="@{/resources/css/base.css}" rel="stylesheet" />
 <link th:href="@{/resources/css/container.css}" rel="stylesheet" />
-<script type="text/javascript" th:src="@{/resources/js/accordion-menu.js}"></script>
+<script type="text/javascript"
+	th:src="@{/resources/js/accordion-menu.js}"></script>
 <script type="text/javascript" th:src="@{/resources/js/general.js}"></script>
 
 
@@ -35,10 +36,10 @@
 			<div id="contents">
 				<div class="search_form">
 					<h3>Student Update</h3>
-					<label id="errormsg" th:text="${err}"> </label> <label style="color: blue;" th:text="${msg}"></label>
-					<br /> <br /> <br />
-					<form action="setupupdatestudent"
-						method="post" id="myform" th:object="${student}">
+					<label id="errormsg" th:text="${err}"> </label> <label
+						style="color: blue;" th:text="${msg}"></label> <br /> <br /> <br />
+					<form th:action="@{setupupdatestudent}" method="post" id="myform"
+						th:object="${student}">
 						<table class="tableForm">
 							<tr height="30px">
 								<td class="tblSingleLabel">Student No.</td>
@@ -53,14 +54,15 @@
 							<tr>
 								<td class="tblSingleLabel">Class Name *</td>
 								<td class="tblSingleInput"><select id="expenseType"
-										th:field="*{className}">
+									th:field="*{className}">
 
 										<option value="NONE" label="Select" />
-									
-										<option th:each="list:${session.clist}" th:text="${list.name}" th:value="${list.name}"></option>
-			
 
-									</select></td>
+										<option th:each="list:${session.clist}" th:text="${list.name}"
+											th:value="${list.name}"></option>
+
+
+								</select></td>
 							</tr>
 							<tr>
 								<td class="tblSingleLabel">Register Date</td>
@@ -69,27 +71,25 @@
 							<tr>
 								<td class="tblSingleLabel">Status *</td>
 								<td class="tblSingleInput"><select id="expenseType"
-										class="normal_sel" th:field="*{status}">
+									class="normal_sel" th:field="*{status}">
 										<option value=""></option>
 
 										<option th:value="Attending">Attending</option>
 										<option th:value="Passed">Passed</option>
 										<option th:value="Failed">Failed</option>
 
-									</select></td>
+								</select></td>
 							</tr>
 
 						</table>
 						<br />
 						<div id="btnGroup">
-							<input type="submit" value="Update" class="button" />
-							<a th:href="@{/deletestudent(id=${studentId})}"><input type="submit"
-						value="Delete" id="delete" class="button"
-						 /></a>
+							<input type="submit" value="Update" class="button" /> <a
+								th:href="@{deletestudent(id=${student.studentId})}"><input
+								type="button" value="Delete" /></a>
 					</form>
-					 <a
-						href="/studentreset"> <input type="button"
-						value="Back" class="button" />
+					<a href="/studentreset"> <input type="button" value="Back"
+						class="button" />
 					</a>
 				</div>
 			</div>
